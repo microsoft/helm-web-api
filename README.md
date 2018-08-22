@@ -56,7 +56,7 @@ The solution we propose consists of two parts, both as web servers:
 5. Label each ingress controller. This is required, since this is our way of telling the system, which IPs to use:
 
     ```bash
-    kubectl label service myingress appingress=ingress
+    kubectl label service myingress-nginx-ingress-controller appingress=ingress
     ```
 
 Now you have a working Autom8s API awaiting HTTP requests.
