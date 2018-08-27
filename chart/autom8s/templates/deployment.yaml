@@ -1,0 +1,41 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ template "autom8s.fullname" . }}
+  labels:
+    app: {{ template "autom8s.name" . }}
+    chart: {{ template "autom8s.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ template "autom8s.name" . }}
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "autom8s.name" . }}
+        release: {{ .Release.Name }}
+    spec:
+      serviceAccountName: {{ .Values.rbac.helmServiceAccount }}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ required "registry name is required" .Values.image.registry }}/{{ .Values.image.name }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 4002
+              protocol: TCP
+          env:
+          - name: LOAD_BALANCER_NAMESPACE
+            value: {{ .Values.ingress.ingressNamespace }}
+          - name: PORT_MIN
+            value: "{{ .Values.ingress.minPort }}"
+          - name: PORT_MAX
+            value: "{{ .Values.ingress.maxPort }}"
+          - name: INGRESS_LABEL
+            value: {{ .Values.ingress.ingressLabel }}
+          - name: TILLER_SERVICE_ACCOUNT
+            value: {{ .Values.rbac.tillerServiceAccount }}
