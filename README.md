@@ -27,7 +27,7 @@ The solution we propose consists of two parts, both as web servers:
      Make sure to grant tiller sufficient permissions to run helm inside the cluster, and install the Autom8s Chart.
     The example below will configure helm and tiller to work with the chart's default values. Execute the following lines if using the default chart values:
     ```bash
-    kubectl apply -f https://raw.githubusercontent.com/Microsoft/Automation-for-K8S/master/rbac-example/tiller.yaml
+    kubectl apply -f https://raw.githubusercontent.com/Microsoft/k8s-dynamically-creating-external-endpoints/master/rbac-example/tiller.yaml
 
     helm init --service-account tiller
     ```
