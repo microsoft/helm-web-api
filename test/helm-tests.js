@@ -1,7 +1,7 @@
 var assert = require('assert');
 var expect = require('chai').expect;
 var should = require('chai').should(); 
-var Helm = require('../autom8s/helm');
+var Helm = require('../on-demand-micro-services-deployment-k8s/helm');
 
 describe('Ctor', function () {
     it('instance is created', function () {

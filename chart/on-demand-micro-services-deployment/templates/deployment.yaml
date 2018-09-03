@@ -1,22 +1,22 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: {{ template "autom8s.fullname" . }}
+  name: {{ template "on-demand-micro-services-deployment-k8s.fullname" . }}
   labels:
-    app: {{ template "autom8s.name" . }}
-    chart: {{ template "autom8s.chart" . }}
+    app: {{ template "on-demand-micro-services-deployment-k8s.name" . }}
+    chart: {{ template "on-demand-micro-services-deployment-k8s.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ template "autom8s.name" . }}
+      app: {{ template "on-demand-micro-services-deployment-k8s.name" . }}
       release: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: {{ template "autom8s.name" . }}
+        app: {{ template "on-demand-micro-services-deployment-k8s.name" . }}
         release: {{ .Release.Name }}
     spec:
       serviceAccountName: {{ .Values.rbac.helmServiceAccount }}

@@ -1,7 +1,7 @@
 {
-  "name": "autom8s",
+  "name": "on-demand-micro-services-deployment-k8s",
   "version": "1.0.0",
-  "description": "Project Autom8s - Automation for K8S. Dynamically deploy applications to kubernetes cluster and expose them externally",
+  "description": "Dynamically deploy applications to kubernetes cluster and expose them externally via a single IP",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",

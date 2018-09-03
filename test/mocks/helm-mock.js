@@ -1,4 +1,4 @@
-﻿const Helm = require('../../autom8s/helm');
+﻿const Helm = require('../../on-demand-micro-services-deployment-k8s/helm');
 
 class HelmMock extends Helm {
   async _executeHelm(command, values = '') {

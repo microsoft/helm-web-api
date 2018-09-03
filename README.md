@@ -1,5 +1,5 @@
 
-# Helm Charts installation through http endpoints
+# On-demand micro-services deployment for Kubernetes via HTTP endpoints
 
 ## Enabling applications in your Kubernetes cluster to programmatically install helm charts and expose them through a single public facing IP
 
@@ -24,7 +24,7 @@ The solution we propose consists of two parts, both as web servers:
 
 1. Install [Helm](https://github.com/kubernetes/helm) with [RBAC](https://github.com/kubernetes/helm/blob/master/docs/rbac.md#tiller-and-role-based-access-control)
 
-     Make sure to grant tiller sufficient permissions to run helm inside the cluster, and install the Autom8s Chart.
+    Make sure to grant tiller sufficient permissions to run helm inside the cluster, and install the app Chart.
     The example below will configure helm and tiller to work with the chart's default values. Execute the following lines if using the default chart values:
     ```bash
     kubectl apply -f https://raw.githubusercontent.com/Microsoft/k8s-dynamically-creating-external-endpoints/master/rbac-example/tiller.yaml
@@ -35,22 +35,22 @@ The solution we propose consists of two parts, both as web servers:
     * [Build and push](https://docs.docker.com/docker-cloud/builds/push-images/) the image into a docker repository
 
     ```bash
-    docker build -t registryname/autom8s .
-    docker push registryname/autom8s
+    docker build -t registryname/on-demand-micro-services-deployment-k8s .
+    docker push registryname/on-demand-micro-services-deployment-k8s
     ```
 
-    * Edit the [values.yaml](./chart/autom8s/values.yaml) file to point to the newly published image and registry
+    * Edit the [values.yaml](./chart/on-demand-micro-services-deployment-k8s/values.yaml) file to point to the newly published image and registry
 
-3. Install the Autom8s chart
+3. Install the app chart
 
     ```bash
-    helm install chart/autom8s --name autom8s --set rbac.create=true
+    helm install chart/on-demand-micro-services-deployment-k8s --name on-demand-micro-services-deployment-k8s --set rbac.create=true
     ```
 
-4. Call autom8s and install `nginx-ingress-controller`, to expose other helm charts via a single public IP:
+4. Call on-demand-micro-services-deployment-k8s and install `nginx-ingress-controller`, to expose other helm charts via a single public IP:
 
     ```bash
-    curl -d '{"chartName":"stable/nginx-ingress", "releaseName":"myingress"}' -H "Content-Type: application/json" -X POST http://<autom8s-ip>:4000/install
+    curl -d '{"chartName":"stable/nginx-ingress", "releaseName":"myingress"}' -H "Content-Type: application/json" -X POST http://<on-demand-micro-services-deployment-k8s-ip>:4000/install
     ```
 
 5. Label each ingress controller. This is required, since this is our way of telling the system, which IPs to use:
@@ -59,11 +59,11 @@ The solution we propose consists of two parts, both as web servers:
     kubectl label service myingress-nginx-ingress-controller appingress=ingress
     ```
 
-Now you have a working Autom8s API awaiting HTTP requests.
+Now you have a working API awaiting HTTP requests.
 
 ## Using the API
 
-If you used the default settings, the API will be accessible internally at: `http://autom8s.default.svc.cluster.local:4000`
+If you used the default settings, the API will be accessible internally at: `http://on-demand-micro-services-deployment-k8s.default.svc.cluster.local:4000`
 
 Here is a quick node.js snippet that makes use of the API to install RabbitMQ with default settings.
 

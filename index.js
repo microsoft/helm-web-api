@@ -1,8 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const Helm = require('./autom8s/helm');
-const PortsAllocator = require('./autom8s/ports-allocator');
-const IngressManager = require('./autom8s/ingress-manager');
+const Helm = require('./on-demand-micro-services-deployment-k8s/helm');
+const PortsAllocator = require('./on-demand-micro-services-deployment-k8s/ports-allocator');
+const IngressManager = require('./on-demand-micro-services-deployment-k8s/ingress-manager');
 
 const app = express();
 

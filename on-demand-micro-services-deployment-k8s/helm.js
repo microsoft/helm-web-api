@@ -2,8 +2,8 @@
 const exec = util.promisify(require('child_process').exec);
 
 const helmBinaryLocation = process.env.HELM_BINARY;
-/** Since autom8s is installed via a Chart, init was already been called, no need to init again.
- * We are leaving this as a comment, in case someone will need to execute it when autom8s is
+/** Since the installation is via a Chart, init was already been called, no need to init again.
+ * We are leaving this as a comment, in case someone will need to execute it when
  * installed via yaml files
  */
 // console.log('Initializing tiller with service account: ' + process.env.TILLER_SERVICE_ACCOUNT);

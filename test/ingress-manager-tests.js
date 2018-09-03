@@ -2,8 +2,8 @@ var assert = require('assert');
 var expect = require('chai').expect;
 var should = require('chai').should(); 
 var HelmMock = require('./mocks/helm-mock');
-var PortsAllocator = require('../autom8s/ports-allocator');
-var IngressManager = require('../autom8s/ingress-manager');
+var PortsAllocator = require('../on-demand-micro-services-deployment-k8s/ports-allocator');
+var IngressManager = require('../on-demand-micro-services-deployment-k8s/ingress-manager');
 
 describe('Ctor', function () {
     it('instance is created', function () {

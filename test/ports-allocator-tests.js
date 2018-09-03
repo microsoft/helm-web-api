@@ -1,7 +1,7 @@
 const assert = require('assert');
 const expect = require('chai').expect;
 const should = require('chai').should();
-const PortsAllocator = require('../autom8s/ports-allocator');
+const PortsAllocator = require('../on-demand-micro-services-deployment-k8s/ports-allocator');
 
 describe('Ctor', function () {
     it('instance is created', function () {

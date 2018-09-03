@@ -1,4 +1,4 @@
-# Default values for autom8s.
+# Default values for on-demand-micro-services-deployment-k8s.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -7,7 +7,7 @@ replicaCount: 1
 image:
   # uncomment and fill registry name
   # registry: 
-  name: autom8s
+  name: on-demand-micro-services-deployment-k8s
   tag: latest
   pullPolicy: Always
 
