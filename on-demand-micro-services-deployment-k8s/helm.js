@@ -16,9 +16,13 @@ exec(`${helmBinaryLocation} init --client-only`);
 class Helm {
   async install(deployOptions) {
     console.log(`Installing new chart. deployOptions: ${JSON.stringify(deployOptions)}`);
+    let nameSpace = '';
+    if (deployOptions.nameSpace !== undefined) {
+        nameSpace = `--namespace=${deployOptions.nameSpace.toLowerCase()}`;
+    }
     const chartName = deployOptions.chartName.toLowerCase();
     const { releaseName } = deployOptions;
-    let installCommand = `json install ${chartName}`;
+    let installCommand = `json install ${nameSpace} ${chartName}`;
 
     // sanity
     Helm._validateNotEmpty(chartName, 'chartName');
