@@ -8,12 +8,13 @@ Here are the available endpoints of the API:
 | ---  | ----         | ----        | ---           |
 | install | POST | install a helm chart | json |
 
-### Paramaters
+### Parameters
 
 | Name | Description | Optional|
 | ---  | ----         | ----        |
 | chartName | name of the chart | required |
 | releaseName | set the release name. If not present, helm will generate one for you. | optional |
+| nameSpace | set the namespace. | optional |
 | privateChartsRepo | a URL to your own custom repo. Credentials may be incorporated in the URL in the form of: `https://user:token@domain/git/repo/path` | optional |
 | values | a key-value object of values to set | optional |
 ---
@@ -24,7 +25,7 @@ Here are the available endpoints of the API:
 | ---  | ----         | ----        | ---           |
 | upgrade | POST | upgrade a helm release | json |
 
-### Paramaters
+### Parameters
 
 | Name | Description | Optional|
 | ---  | ----         | ----        |
@@ -40,7 +41,7 @@ Here are the available endpoints of the API:
 | ---  | ----         | ----        | ---           |
 | upgrade | POST | delete a helm release | json |
 
-### Paramaters
+### Parameters
 
 | Name | Description | Optional|
 | ---  | ----         | ----        |
@@ -54,7 +55,7 @@ Here are the available endpoints of the API:
 | ---  | ----         | ----        | ---           |
 | setrule | POST | create an ingress rule | json |
 
-### Paramaters
+### Parameters
 
 | Name | Description | Optional|
 | ---  | ----         | ----        |
