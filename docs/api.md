@@ -38,7 +38,7 @@ Here are the available endpoints of the API:
 
 | Name | Http Action | Description | Paramaters type|
 | ---  | ----         | ----        | ---           |
-| upgrade | POST | delete a helm release | json |
+| delete | POST | delete a helm release | json |
 
 ### Paramaters
 
