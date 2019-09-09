@@ -44,7 +44,7 @@ The solution we propose consists of two parts, both as web servers:
 3. Install the app chart
 
     ```bash
-    helm install chart/on-demand-micro-services-deployment-k8s --name on-demand-micro-services-deployment-k8s --set rbac.create=true
+    helm install ./on-demand-micro-services-deployment --name on-demand-micro-services-deployment --set rbac.create=true
     ```
 
 4. Call on-demand-micro-services-deployment-k8s and install `nginx-ingress-controller`, to expose other helm charts via a single public IP:
